@@ -34,7 +34,7 @@ export class TeamAddComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.pokemonSvc.getPokemons().subscribe((pokemons) => {
+    this.pokemonSvc.getPokemons().subscribe(pokemons => {
       this.pokemons = pokemons;
     });
   }
@@ -92,13 +92,15 @@ export class TeamAddComponent implements OnInit {
   }
 
   checkSelectedPokemonsInput(): boolean {
-    if (this.selectedPokemons &&
+    if (
+      this.selectedPokemons &&
       this.selectedPokemons[0] &&
       this.selectedPokemons[1] &&
       this.selectedPokemons[2] &&
       this.selectedPokemons[3] &&
       this.selectedPokemons[4] &&
-      this.selectedPokemons[5]) {
+      this.selectedPokemons[5]
+    ) {
       return false;
     }
     return true;

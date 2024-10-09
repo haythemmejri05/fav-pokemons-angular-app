@@ -8,9 +8,8 @@ describe('PokemonViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PokemonViewComponent]
-    })
-    .compileComponents();
+      imports: [PokemonViewComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PokemonViewComponent);
     component = fixture.componentInstance;

@@ -8,9 +8,8 @@ describe('PokemonEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PokemonEditComponent]
-    })
-    .compileComponents();
+      imports: [PokemonEditComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PokemonEditComponent);
     component = fixture.componentInstance;

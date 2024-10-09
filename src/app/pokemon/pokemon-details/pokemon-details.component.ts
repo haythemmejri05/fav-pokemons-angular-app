@@ -4,7 +4,7 @@ import { Pokemon } from '../../models/pokemon.model';
 @Component({
   selector: 'app-pokemon-details',
   templateUrl: './pokemon-details.component.html',
-  styleUrl: './pokemon-details.component.scss'
+  styleUrl: './pokemon-details.component.scss',
 })
 export class PokemonDetailsComponent {
   @Input() pokemon!: Pokemon;

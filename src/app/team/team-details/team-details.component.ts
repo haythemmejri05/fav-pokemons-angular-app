@@ -6,12 +6,12 @@ import { Pokemon } from '../../models/pokemon.model';
 @Component({
   selector: 'app-team-details',
   templateUrl: './team-details.component.html',
-  styleUrl: './team-details.component.scss'
+  styleUrl: './team-details.component.scss',
 })
 export class TeamDetailsComponent {
   @Input() team!: Team;
 
-  constructor(private teamSvc: TeamService) { }
+  constructor(private teamSvc: TeamService) {}
 
   getPokemonImages(): string[] {
     return this.teamSvc.getPokemonImages(this.team);

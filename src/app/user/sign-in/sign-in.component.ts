@@ -6,19 +6,22 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.scss'
+  styleUrl: './sign-in.component.scss',
 })
 export class SignInComponent {
   credentials: UserCredentials = { email: '', password: '' };
   signInError = false;
 
-  constructor(private userSvc: UserService, private router: Router) { }
+  constructor(
+    private userSvc: UserService,
+    private router: Router
+  ) {}
 
   signIn() {
     this.signInError = false;
     this.userSvc.signIn(this.credentials).subscribe({
       next: () => this.router.navigate(['/pokemons']),
-      error: () => this.signInError = true
+      error: () => (this.signInError = true),
     });
   }
 }

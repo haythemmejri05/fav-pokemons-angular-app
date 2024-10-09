@@ -5,17 +5,19 @@ import { UserService } from '../user/user.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.scss'
+  styleUrl: './nav-bar.component.scss',
 })
 export class NavBarComponent implements OnInit {
   user: User | null = null;
   showSignOutMenu = false;
 
-  constructor(private userSvc: UserService) { }
+  constructor(private userSvc: UserService) {}
 
   ngOnInit() {
     this.userSvc.getUser().subscribe({
-      next: (user) => { this.user = user }
+      next: user => {
+        this.user = user;
+      },
     });
   }
 

@@ -4,10 +4,16 @@
   <form #selectTeamsForm="ngForm" class="form" (ngSubmit)="fight()">
     <div class="row mt-5">
       <div class="col-md-6 mb-3" *ngFor="let index of [1, 2]">
-        <label for="team-select" class="form-label">Team {{index}}<span class="text-danger">*</span></label>
+        <label for="team-select" class="form-label"
+          >Team {{ index }}<span class="text-danger">*</span></label
+        >
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-            data-bs-toggle="dropdown" aria-expanded="false">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
             {{ getSelectTeam(index) || 'Select Team ' + index }}
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -21,9 +27,18 @@
       </div>
     </div>
     <div class="mb-4 mt-5">
-      <button type="submit" class="btn btn-primary me-2" [disabled]="shouldFormBeDisabled(selectTeamsForm.form.invalid)">Fight</button>
-      <div class="addTeamError" *ngIf="selectTeamsError">Add Team Failed. Please try again.</div>
-      <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
+      <button
+        type="submit"
+        class="btn btn-primary me-2"
+        [disabled]="shouldFormBeDisabled(selectTeamsForm.form.invalid)">
+        Fight
+      </button>
+      <div class="addTeamError" *ngIf="selectTeamsError">
+        Add Team Failed. Please try again.
+      </div>
+      <button type="button" class="btn btn-secondary" (click)="back()">
+        Back
+      </button>
     </div>
   </form>
 </div>

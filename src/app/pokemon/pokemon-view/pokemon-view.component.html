@@ -2,21 +2,37 @@
   <h1>Pokemon Details</h1>
   <div class="card mt-3">
     <div class="card-body">
-      <img [src]="pokemon.image" class="img-thumbnail rounded float-start me-3 pokemon-thumbnail" [alt]="pokemon.name"
-        *ngIf="pokemon.image">
+      <img
+        [src]="pokemon.image"
+        class="img-thumbnail rounded float-start me-3 pokemon-thumbnail"
+        [alt]="pokemon.name"
+        *ngIf="pokemon.image" />
       <div>
-        <h5 class="mb-1"><p>{{pokemon.name}}</p></h5>
-          <h6>
-            <span class="badge text-bg-secondary">
-              {{getPokemonType() | uppercase }}
-            </span>
-          </h6>
-          <div><span class="badge text-bg-primary">Power {{pokemon.power}}</span></div>
-          <div><span class="badge text-bg-success">Life {{pokemon.life}}</span></div>
+        <h5 class="mb-1">
+          <p>{{ pokemon.name }}</p>
+        </h5>
+        <h6>
+          <span class="badge text-bg-secondary">
+            {{ getPokemonType() | uppercase }}
+          </span>
+        </h6>
+        <div>
+          <span class="badge text-bg-primary">Power {{ pokemon.power }}</span>
+        </div>
+        <div>
+          <span class="badge text-bg-success">Life {{ pokemon.life }}</span>
+        </div>
       </div>
       <div class="mt-3">
-        <button type="button" class="btn btn-primary me-2" (click)="editPokemon()">Edit</button>
-        <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
+        <button
+          type="button"
+          class="btn btn-primary me-2"
+          (click)="editPokemon()">
+          Edit
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="back()">
+          Back
+        </button>
       </div>
     </div>
   </div>

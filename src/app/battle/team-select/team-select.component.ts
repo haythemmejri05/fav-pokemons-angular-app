@@ -7,7 +7,7 @@ import { BattleService } from '../battle.service';
 @Component({
   selector: 'app-team-select',
   templateUrl: './team-select.component.html',
-  styleUrl: './team-select.component.scss'
+  styleUrl: './team-select.component.scss',
 })
 export class TeamSelectComponent implements OnInit {
   teams: Team[] = [];
@@ -17,7 +17,8 @@ export class TeamSelectComponent implements OnInit {
   constructor(
     private teamSvc: TeamService,
     private battleSvc: BattleService,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.teamSvc.getTeams().subscribe(teams => {
@@ -31,7 +32,12 @@ export class TeamSelectComponent implements OnInit {
 
   fight() {
     this.battleSvc.selectedTeams = [...this.selectedTeams];
-    this.router.navigate(['/battle/fight-rounds/team1', this.selectedTeams[0].id, 'team2', this.selectedTeams[1].id]);
+    this.router.navigate([
+      '/battle/fight-rounds/team1',
+      this.selectedTeams[0].id,
+      'team2',
+      this.selectedTeams[1].id,
+    ]);
   }
 
   back() {
@@ -43,14 +49,16 @@ export class TeamSelectComponent implements OnInit {
   }
 
   getSelectTeam(index: number): string {
-    return this.selectedTeams[index -1]?.name || '';
+    return this.selectedTeams[index - 1]?.name || '';
   }
 
   checkSelectedTeamsInput(): boolean {
-    if (this.selectedTeams &&
+    if (
+      this.selectedTeams &&
       this.selectedTeams[0] &&
       this.selectedTeams[1] &&
-      this.selectedTeams[0].id !== this.selectedTeams[1].id) {
+      this.selectedTeams[0].id !== this.selectedTeams[1].id
+    ) {
       return false;
     }
     return true;

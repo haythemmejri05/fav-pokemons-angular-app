@@ -1,13 +1,21 @@
-<img [src]="pokemon.image" class="img-thumbnail rounded float-start me-3 pokemon-thumbnail" [alt]="pokemon.name" *ngIf="pokemon.image">
+<img
+  [src]="pokemon.image"
+  class="img-thumbnail rounded float-start me-3 pokemon-thumbnail"
+  [alt]="pokemon.name"
+  *ngIf="pokemon.image" />
 <div>
   <a [routerLink]="'/pokemons/view/' + pokemon.id">
-    <h5 class="mb-1">{{pokemon.name}}</h5>
+    <h5 class="mb-1">{{ pokemon.name }}</h5>
   </a>
   <h6>
     <span class="badge text-bg-secondary">
-      {{getPokemonType(pokemon) | uppercase }}
+      {{ getPokemonType(pokemon) | uppercase }}
     </span>
   </h6>
-  <div><span class="badge text-bg-primary">Power {{pokemon.power}}</span></div>
-  <div><span class="badge text-bg-success">Life {{pokemon.life}}</span></div>
+  <div>
+    <span class="badge text-bg-primary">Power {{ pokemon.power }}</span>
+  </div>
+  <div>
+    <span class="badge text-bg-success">Life {{ pokemon.life }}</span>
+  </div>
 </div>

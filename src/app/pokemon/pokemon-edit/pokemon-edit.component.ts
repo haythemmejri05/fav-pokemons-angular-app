@@ -7,7 +7,7 @@ import { PokemonType } from '../../models/pokemon-type.model';
 @Component({
   selector: 'app-pokemon-edit',
   templateUrl: './pokemon-edit.component.html',
-  styleUrl: './pokemon-edit.component.scss'
+  styleUrl: './pokemon-edit.component.scss',
 })
 export class PokemonEditComponent implements OnInit {
   pokemonId = '';
@@ -16,14 +16,22 @@ export class PokemonEditComponent implements OnInit {
   pokemonTypes: PokemonType[] = [];
   pokemonTypeId = '';
 
-  constructor(private pokemonSvc: PokemonService, private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private pokemonSvc: PokemonService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.pokemonId = params["id"];
+    this.route.params.subscribe(params => {
+      this.pokemonId = params['id'];
       if (this.pokemonId) {
         this.pokemon = this.pokemonSvc.getPokemon(this.pokemonId);
-        if (this.pokemon && typeof this.pokemon.type === 'object' && this.pokemon.type !== null) {
+        if (
+          this.pokemon &&
+          typeof this.pokemon.type === 'object' &&
+          this.pokemon.type !== null
+        ) {
           this.pokemonTypeId = this.pokemon.type.id;
         }
       }
@@ -45,9 +53,11 @@ export class PokemonEditComponent implements OnInit {
     this.editPokemonError = false;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { type, ...newPokemon } = this.pokemon!;
-    this.pokemonSvc.editPokemon({ type: this.pokemonTypeId, ...newPokemon }).subscribe({
-      next: () => this.router.navigate(['/pokemons/view/', this.pokemon!.id]),
-      error: () => this.editPokemonError = true
-    });
+    this.pokemonSvc
+      .editPokemon({ type: this.pokemonTypeId, ...newPokemon })
+      .subscribe({
+        next: () => this.router.navigate(['/pokemons/view/', this.pokemon!.id]),
+        error: () => (this.editPokemonError = true),
+      });
   }
 }

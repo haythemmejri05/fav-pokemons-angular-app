@@ -1,12 +1,23 @@
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">{{team.name}} <span class="badge text-bg-secondary">Power {{getTeamPower()}}</span></h5>
+    <h5 class="card-title">
+      {{ team.name }}
+      <span class="badge text-bg-secondary">Power {{ getTeamPower() }}</span>
+    </h5>
     <div class="d-flex flex-wrap justify-content-between">
       <div *ngFor="let pokemon of getTeamPokemons()">
-        <img *ngIf="pokemon.image" [src]="pokemon.image" class="img-fluid mb-2 pokemon-thumbnail" [alt]="pokemon.name" />
-        <div>{{pokemon.name}}</div>
-        <div><span class="badge text-bg-primary">Power {{pokemon.power}}</span></div>
-        <div><span class="badge text-bg-success">Life {{pokemon.life}}</span></div>
+        <img
+          *ngIf="pokemon.image"
+          [src]="pokemon.image"
+          class="img-fluid mb-2 pokemon-thumbnail"
+          [alt]="pokemon.name" />
+        <div>{{ pokemon.name }}</div>
+        <div>
+          <span class="badge text-bg-primary">Power {{ pokemon.power }}</span>
+        </div>
+        <div>
+          <span class="badge text-bg-success">Life {{ pokemon.life }}</span>
+        </div>
       </div>
     </div>
   </div>

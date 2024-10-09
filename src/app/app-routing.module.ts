@@ -19,15 +19,16 @@ const routes: Routes = [
   { path: 'teams', component: TeamListComponent },
   { path: 'teams/add', component: TeamAddComponent },
   { path: 'battle/team-select', component: TeamSelectComponent },
-  { path: 'battle/fight-rounds/team1/:team1/team2/:team2', component: FightRoundsComponent },
+  {
+    path: 'battle/fight-rounds/team1/:team1/team2/:team2',
+    component: FightRoundsComponent,
+  },
   { path: '', redirectTo: '/', pathMatch: 'full' },
 ];
 
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forRoot(routes)
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

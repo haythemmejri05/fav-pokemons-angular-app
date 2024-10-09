@@ -5,13 +5,12 @@ import { TeamService } from '../team.service';
 @Component({
   selector: 'app-team-list',
   templateUrl: './team-list.component.html',
-  styleUrl: './team-list.component.scss'
+  styleUrl: './team-list.component.scss',
 })
 export class TeamListComponent implements OnInit {
   teams: Team[] = [];
 
-  constructor(
-    private teamSvc: TeamService) { }
+  constructor(private teamSvc: TeamService) {}
 
   ngOnInit() {
     this.teamSvc.getTeams().subscribe(teams => {

@@ -39,6 +39,6 @@ import { FightRoundsComponent } from './battle/fight-rounds/fight-rounds.compone
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -5,19 +5,25 @@ import { Pokemon } from '../models/pokemon.model';
 import { PokemonType } from '../models/pokemon-type.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PokemonService {
   pokemons: BehaviorSubject<Pokemon[]> = new BehaviorSubject<Pokemon[]>([]);
-  pokemonTypes: BehaviorSubject<PokemonType[]> = new BehaviorSubject<PokemonType[]>([]);
+  pokemonTypes: BehaviorSubject<PokemonType[]> = new BehaviorSubject<
+    PokemonType[]
+  >([]);
   private pokemon: BehaviorSubject<Pokemon | null>;
 
   constructor(private http: HttpClient) {
     this.http.get<Pokemon[]>('/api/pokemons').subscribe({
-      next: (pokemons) => { this.pokemons.next(pokemons) }
+      next: pokemons => {
+        this.pokemons.next(pokemons);
+      },
     });
     this.http.get<Pokemon[]>('/api/pokemon-types').subscribe({
-      next: (pokemonTypes) => { this.pokemonTypes.next(pokemonTypes) }
+      next: pokemonTypes => {
+        this.pokemonTypes.next(pokemonTypes);
+      },
     });
     this.pokemon = new BehaviorSubject<Pokemon | null>(null);
   }
@@ -31,15 +37,15 @@ export class PokemonService {
   }
 
   getPokemon(pokemonId: string): Pokemon | undefined {
-    return this.pokemons.getValue().find((pokemon) => pokemon.id === pokemonId);
+    return this.pokemons.getValue().find(pokemon => pokemon.id === pokemonId);
   }
 
   editPokemon(pokemon: Pokemon): Observable<Pokemon> {
-    return this.http
-      .put<Pokemon>(`/api/pokemons/${pokemon.id}`, pokemon)
-      .pipe(map((pokemon: Pokemon) => {
+    return this.http.put<Pokemon>(`/api/pokemons/${pokemon.id}`, pokemon).pipe(
+      map((pokemon: Pokemon) => {
         this.pokemon.next(pokemon);
         return pokemon;
-      }));
+      })
+    );
   }
 }

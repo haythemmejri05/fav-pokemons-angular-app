@@ -2,7 +2,9 @@
   <h1>Edit Pokemon</h1>
   <form #editPokemonForm="ngForm" class="form mt-3" (ngSubmit)="editPokemon()">
     <div class="mb-3">
-      <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+      <label for="name" class="form-label"
+        >Name <span class="text-danger">*</span></label
+      >
       <input
         name="name"
         class="form-control"
@@ -10,8 +12,10 @@
         placeholder="Name"
         type="text"
         [(ngModel)]="pokemon!.name"
-        #name="ngModel">
-        <em class="error" *ngIf="name.errors?.['required'] && name.touched">Name is required</em>
+        #name="ngModel" />
+      <em class="error" *ngIf="name.errors?.['required'] && name.touched"
+        >Name is required</em
+      >
     </div>
     <div class="mb-3">
       <label for="image" class="form-label">Image URL</label>
@@ -22,10 +26,12 @@
         placeholder="Image URL"
         type="text"
         [(ngModel)]="pokemon!.image"
-        #image="ngModel">
+        #image="ngModel" />
     </div>
     <div class="mb-3">
-      <label for="type" class="form-label">Type <span class="text-danger">*</span></label>
+      <label for="type" class="form-label"
+        >Type <span class="text-danger">*</span></label
+      >
       <select
         name="type"
         class="form-select form-select-sm"
@@ -33,11 +39,19 @@
         #pokemonType="ngModel"
         required
         aria-label="Type">
-          <option *ngFor="let option of getPokemonTypes()" [value]="option.id" selected>{{ option.name | uppercase }}</option>-->
+        <option
+          *ngFor="let option of getPokemonTypes()"
+          [value]="option.id"
+          selected>
+          {{ option.name | uppercase }}
+        </option>
+        -->
       </select>
     </div>
     <div class="mb-3">
-      <label for="power" class="form-label">Power <span class="text-danger">*</span></label>
+      <label for="power" class="form-label"
+        >Power <span class="text-danger">*</span></label
+      >
       <input
         type="range"
         name="power"
@@ -47,11 +61,15 @@
         step="1"
         [(ngModel)]="pokemon!.power"
         #power="ngModel"
-        id="powerRange">
-      <label for="powerRange">Power value: <small>{{power.value}}</small></label>
+        id="powerRange" />
+      <label for="powerRange"
+        >Power value: <small>{{ power.value }}</small></label
+      >
     </div>
     <div class="mb-3">
-      <label for="life" class="form-label">Life <span class="text-danger">*</span></label>
+      <label for="life" class="form-label"
+        >Life <span class="text-danger">*</span></label
+      >
       <input
         type="range"
         name="life"
@@ -61,13 +79,24 @@
         step="1"
         [(ngModel)]="pokemon!.life"
         #life="ngModel"
-        id="lifeRange">
-      <label for="lifeRange">Life value: <small>{{life.value}}</small></label>
+        id="lifeRange" />
+      <label for="lifeRange"
+        >Life value: <small>{{ life.value }}</small></label
+      >
     </div>
     <div>
-      <button type="submit" class="btn btn-primary me-2" [disabled]="editPokemonForm.form.invalid">Submit</button>
-      <div class="editPokemonError" *ngIf="editPokemonError">Edit Pokemon Failed. Please try again.</div>
-      <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
+      <button
+        type="submit"
+        class="btn btn-primary me-2"
+        [disabled]="editPokemonForm.form.invalid">
+        Submit
+      </button>
+      <div class="editPokemonError" *ngIf="editPokemonError">
+        Edit Pokemon Failed. Please try again.
+      </div>
+      <button type="button" class="btn btn-secondary" (click)="back()">
+        Back
+      </button>
     </div>
   </form>
 </div>
