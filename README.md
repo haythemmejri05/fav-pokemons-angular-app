@@ -107,15 +107,15 @@ npm start
 
 Here is an overview of the all routes in the application:
 
-- /sign-in - User authentication
-- /sign-up - User registration
-- /pokemons - Displays a list of all available Pokemons
-- /pokemons/view/:id - View details of a specific Pokemon
-- /pokemons/edit/:id - View details of a specific Pokemon
-- /teams - Shows all teams with their total power
-- /team/new - Add a new team by selecting a name and six Pokemons
-- /battle/team-select - Select 2 teams to start a battle
-- /battle/fight-rounds/team1/:team1/team2/:team2 - Simulate a battle between two teams
+- `/sign-in` - User authentication
+- `/sign-up` - User registration
+- `/pokemons` - Displays a list of all available Pokemons
+- `/pokemons/view/:id` - View details of a specific Pokemon
+- `/pokemons/edit/:id` - View details of a specific Pokemon
+- `/teams` - Shows all teams with their total power
+- `/team/new` - Add a new team by selecting a name and six Pokemons
+- `/battle/team-select` - Select 2 teams to start a battle
+- `/battle/fight-rounds/team1/:team1/team2/:team2` - Simulate a battle between two teams
 
 ## Backend API
 
