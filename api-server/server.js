@@ -219,20 +219,18 @@ app.post('/api/teams', async (req, res) => {
     }
 
     // Insert into the database
-    const { data: team, error } = await supabase
-      .from('teams')
-      .insert([
-        {
-          user_id,
-          name,
-          pokemon1,
-          pokemon2,
-          pokemon3,
-          pokemon4,
-          pokemon5,
-          pokemon6,
-        },
-      ]);
+    const { data: team, error } = await supabase.from('teams').insert([
+      {
+        user_id,
+        name,
+        pokemon1,
+        pokemon2,
+        pokemon3,
+        pokemon4,
+        pokemon5,
+        pokemon6,
+      },
+    ]);
 
     // Error handling
     if (error) return res.status(400).json({ error: error.message });

@@ -122,28 +122,24 @@ export class TeamService {
   }
 
   addTeam(teamToAdd: Team, selectedPokemons: Pokemon[]): Observable<Team> {
-    return (
-      this.http
-        .post<Team>('/api/teams', teamToAdd)
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        .pipe(
-          map((_: Team) => {
-            const addedTeam: Team = {
-              id: '',
-              name: teamToAdd.name,
-              user_id: teamToAdd.user_id,
-              pokemon1: selectedPokemons[0],
-              pokemon2: selectedPokemons[1],
-              pokemon3: selectedPokemons[2],
-              pokemon4: selectedPokemons[3],
-              pokemon5: selectedPokemons[4],
-              pokemon6: selectedPokemons[5],
-            };
-            this.team.next(addedTeam);
-            this.teams.next([...this.teams.getValue(), addedTeam]);
-            return addedTeam;
-          })
-        )
+    return this.http.post<Team>('/api/teams', teamToAdd).pipe(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      map((_: Team) => {
+        const addedTeam: Team = {
+          id: '',
+          name: teamToAdd.name,
+          user_id: teamToAdd.user_id,
+          pokemon1: selectedPokemons[0],
+          pokemon2: selectedPokemons[1],
+          pokemon3: selectedPokemons[2],
+          pokemon4: selectedPokemons[3],
+          pokemon5: selectedPokemons[4],
+          pokemon6: selectedPokemons[5],
+        };
+        this.team.next(addedTeam);
+        this.teams.next([...this.teams.getValue(), addedTeam]);
+        return addedTeam;
+      })
     );
   }
 }

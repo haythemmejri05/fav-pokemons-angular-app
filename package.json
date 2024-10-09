@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "eslint .",
-    "prettier": "prettier --check",
+    "prettier": "prettier . --check",
     "prepare": "husky"
   },
   "private": true,
@@ -56,6 +56,17 @@
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
+    ],
+    "rules": {
+      "subject-case": [
+        2,
+        "never",
+        [
+          "upper-case",
+          "pascal-case",
+          "start-case"
+        ]
+      ]
+    }
   }
 }
