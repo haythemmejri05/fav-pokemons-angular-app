@@ -52,8 +52,8 @@ export class FightRoundsComponent implements OnInit {
       ) {
         const firstRound: Round = {
           number: 1,
-          pokemon1,
-          pokemon2,
+          pokemon1: { ...pokemon1 },
+          pokemon2: { ...pokemon2 },
           team1PokemonIndex: 1,
           team2PokemonIndex: 1,
           roundInProgress: false,
@@ -195,7 +195,6 @@ export class FightRoundsComponent implements OnInit {
           pokemon1NewLifeValue;
         this.updatePokemon1LifeInProgress = false;
         if (!this.updatePokemon2LifeInProgress) {
-          this.postUpdateLifeBars(pokemon1NewLifeValue, pokemon2NewLifeValue);
           this.updateTeam1PokemonLife(
             this.battle!.rounds[this.roundNumber - 1].team1PokemonIndex,
             pokemon1NewLifeValue
@@ -204,6 +203,7 @@ export class FightRoundsComponent implements OnInit {
             this.battle!.rounds[this.roundNumber - 1].team2PokemonIndex,
             pokemon2NewLifeValue
           );
+          this.postUpdateLifeBars(pokemon1NewLifeValue, pokemon2NewLifeValue);
         }
         clearInterval(interval1);
       }
@@ -223,7 +223,6 @@ export class FightRoundsComponent implements OnInit {
           pokemon2NewLifeValue;
         this.updatePokemon2LifeInProgress = false;
         if (!this.updatePokemon1LifeInProgress) {
-          this.postUpdateLifeBars(pokemon1NewLifeValue, pokemon2NewLifeValue);
           this.updateTeam1PokemonLife(
             this.battle!.rounds[this.roundNumber - 1].team1PokemonIndex,
             pokemon1NewLifeValue
@@ -232,6 +231,7 @@ export class FightRoundsComponent implements OnInit {
             this.battle!.rounds[this.roundNumber - 1].team2PokemonIndex,
             pokemon2NewLifeValue
           );
+          this.postUpdateLifeBars(pokemon1NewLifeValue, pokemon2NewLifeValue);
         }
         clearInterval(interval2);
       }
@@ -245,7 +245,6 @@ export class FightRoundsComponent implements OnInit {
     this.needANewRound = true;
     this.battle!.rounds[this.roundNumber - 1].roundInProgress = false;
     this.battle!.rounds[this.roundNumber - 1].roundSimulated = true;
-    console.log('this.needANewRound:', this.needANewRound);
     if (this.needANewRound) {
       if (!pokemon1NewLifeValue && pokemon2NewLifeValue) {
         this.battle!.rounds[this.roundNumber - 1].winnerIndex = [2];
@@ -278,7 +277,7 @@ export class FightRoundsComponent implements OnInit {
           roundSimulated: false,
           winnerIndex: [0],
         };
-        this.battle!.rounds.push(nextRound);
+        this.battle!.rounds = [...this.battle!.rounds, nextRound];
         this.updatePokemon1LifeInProgress = false;
         this.updatePokemon2LifeInProgress = false;
       }
@@ -307,16 +306,17 @@ export class FightRoundsComponent implements OnInit {
       ? team1Pokemons.at(
           this.battle!.rounds[this.roundNumber - 1].team1PokemonIndex
         )
-      : this.battle!.rounds[this.roundNumber - 1].pokemon1;
+      : { ...this.battle!.rounds[this.roundNumber - 1].pokemon1 };
   }
 
   getTeam2NextPokemon(): Pokemon | undefined {
     const team2Pokemons = this.getTeam2Pokemons();
+    const team2Pokemon = team2Pokemons.at(
+      this.battle!.rounds[this.roundNumber - 1].team2PokemonIndex
+    );
     return this.shouldTeam2MoveToNextPokemon()
-      ? team2Pokemons.at(
-          this.battle!.rounds[this.roundNumber - 1].team2PokemonIndex
-        )
-      : this.battle!.rounds[this.roundNumber - 1].pokemon2;
+      ? { ...team2Pokemon! }
+      : { ...this.battle!.rounds[this.roundNumber - 1].pokemon2 };
   }
 
   isRoundInProgress(): boolean {

@@ -44,7 +44,6 @@ app.get('/api/pokemons', async (req, res) => {
 // Define the route to add a new Pokemon
 app.post('/api/pokemons', async (req, res) => {
   try {
-    console.log('Request Body:', req.body);
     const { name, type, image, power, life } = req.body;
     // Validate required fields
     if (!name || !type || !power || !life) {
@@ -86,7 +85,6 @@ app.post('/api/pokemons', async (req, res) => {
 // Define the route to update a new Pokemon
 app.put('/api/pokemons/:id', async (req, res) => {
   try {
-    console.log('Request Body:', req.body);
     const { name, type, image, power, life } = req.body;
     const { id } = req.params;
     // Validate required fields
@@ -116,7 +114,6 @@ app.put('/api/pokemons/:id', async (req, res) => {
       .eq('id', id);
 
     // Error handling
-    if (error) console.log(error);
     if (error) return res.status(400).json({ error: error.message });
 
     res.status(200).json({
@@ -131,7 +128,6 @@ app.put('/api/pokemons/:id', async (req, res) => {
 // Define the route to remove Pokemon
 app.delete('/api/pokemons/:id', async (req, res) => {
   try {
-    console.log('Request Body:', req.body);
     const { id } = req.params;
 
     // Remove from the database
@@ -190,7 +186,6 @@ app.get('/api/teams', async (req, res) => {
 // Define the route to add a new team
 app.post('/api/teams', async (req, res) => {
   try {
-    console.log('Request Body:', req.body);
     const {
       user_id,
       name,
@@ -263,7 +258,6 @@ app.get('/api/weakness', async (req, res) => {
 // Define the route for sign-in
 app.post('/api/sign-in', async (req, res) => {
   try {
-    console.log('Request Body:', req.body);
     const { email, password } = req.body;
     // Validate required fields
     if (!email || !password) {
@@ -296,7 +290,6 @@ app.post('/api/sign-in', async (req, res) => {
         })
       : res.status(400).json({ error: 'Bad Request: incorrect credentials' });
   } catch (exception) {
-    console.log(exception);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
@@ -306,7 +299,6 @@ const saltRounds = 10;
 // Define the route for sign-up
 app.post('/api/sign-up', async (req, res) => {
   try {
-    console.log('Request Body:', req.body);
     const { email, password, passwordConfirmation } = req.body;
     // Validate required fields
     if (!email || !password || !passwordConfirmation) {

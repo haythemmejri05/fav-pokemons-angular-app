@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { UserService } from '../user/user.service';
+import { AuthService } from '../user/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,9 +11,12 @@ import { UserService } from '../user/user.service';
 })
 export class NavBarComponent implements OnInit {
   user: User | null = null;
-  showSignOutMenu = false;
 
-  constructor(private userSvc: UserService) {}
+  constructor(
+    private userSvc: UserService,
+    private authSvc: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.userSvc.getUser().subscribe({
@@ -21,12 +26,9 @@ export class NavBarComponent implements OnInit {
     });
   }
 
-  toggleSignOutMenu() {
-    this.showSignOutMenu = !this.showSignOutMenu;
-  }
-
   signOut() {
     this.userSvc.signOut();
-    this.showSignOutMenu = false;
+    this.authSvc.logout();
+    this.router.navigate(['/sign-in']);
   }
 }

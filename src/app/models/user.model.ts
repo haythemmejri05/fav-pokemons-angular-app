@@ -1,7 +1,7 @@
 export interface User {
   id: string; // UUID
   email: string; // User's email
-  password_hash: string; // Hashed password
+  password_hash?: string; // Hashed password
 }
 
 export interface UserCredentials {

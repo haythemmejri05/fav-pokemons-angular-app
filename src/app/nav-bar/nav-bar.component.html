@@ -15,13 +15,6 @@
             >Sign-up</a
           >
         </li>
-        <li class="nav-item" *ngIf="showSignOutMenu">
-          <img
-            src="/assets/images/profile.png"
-            (click)="toggleSignOutMenu()"
-            alt="profile" />
-          <a class="nav-link" (click)="signOut()">Sign-out</a>
-        </li>
         <li class="nav-item" *ngIf="user">
           <a class="nav-link" routerLink="/pokemons" routerLinkActive="active"
             >Pokemons</a
@@ -39,6 +32,9 @@
             routerLinkActive="active"
             >Fight</a
           >
+        </li>
+        <li class="nav-item" *ngIf="user">
+          <a class="nav-link" (click)="signOut()">Sign-out</a>
         </li>
       </ul>
     </div>

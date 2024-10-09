@@ -6,6 +6,7 @@ import {
   User,
   UserCredentials /*, UserSignUpCredentials*/,
 } from '../models/user.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +14,18 @@ import {
 export class UserService {
   private user: BehaviorSubject<User | null>;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private authSvc: AuthService
+  ) {
     this.user = new BehaviorSubject<User | null>(null);
   }
 
   getUser(): Observable<User | null> {
+    if (!this.user.getValue()) {
+      const signedInUser = this.authSvc.getUser();
+      this.user.next(signedInUser!);
+    }
     return this.user;
   }
 
