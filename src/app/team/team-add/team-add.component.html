@@ -54,7 +54,7 @@
         [disabled]="shouldFormBeDisabled(addTeamForm.form.invalid)">
         Submit
       </button>
-      <div class="addTeamError" *ngIf="addTeamError">
+      <div class="error-feedback" *ngIf="addTeamError">
         Add Team Failed. Please try again.
       </div>
       <button type="button" class="btn btn-secondary" (click)="back()">

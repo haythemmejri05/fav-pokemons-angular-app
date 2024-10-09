@@ -33,7 +33,7 @@
         [disabled]="shouldFormBeDisabled(selectTeamsForm.form.invalid)">
         Fight
       </button>
-      <div class="addTeamError" *ngIf="selectTeamsError">
+      <div class="error-feedback" *ngIf="selectTeamsError">
         Add Team Failed. Please try again.
       </div>
       <button type="button" class="btn btn-secondary" (click)="back()">
