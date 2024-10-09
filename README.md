@@ -19,21 +19,21 @@ This app simulates Pokemon battles, allowing users to create teams and engage in
 
 ### Frontend
 
-**Angular:** Main framework for building the app's user interface (version used is Angular 18.2.7)
-**TypeScript:** Strongly typed language built on JavaScript
-**Bootstrap:** Enables responsive design and styling (Used Bootstrap v5)
+- **Angular:** Main framework for building the app's user interface (version used is Angular 18.2.7)
+- **TypeScript:** Strongly typed language built on JavaScript
+- **Bootstrap:** Enables responsive design and styling (Used Bootstrap v5)
 
 ### Backend
 
-**Node.js:** Provides strong typing to JavaScript (version used 18.19.1)
-**Express.js:** Framework for building server-side APIs
-**Javascript:** For backend logic and API development
-**Supabase:** Handles the PostgreSQL database and authentication of users
+- **Node.js:** Provides strong typing to JavaScript (version used 18.19.1)
+- **Express.js:** Framework for building server-side APIs
+- **Javascript:** For backend logic and API development
+- **Supabase:** Handles the PostgreSQL database and authentication of users
 
 ### Development Tools
 
-**ESLint:** For code consistency and linting
-**Prettier:** Code formatter for maintaining style consistency
+- **ESLint:** For code consistency and linting
+- **Prettier:** Code formatter for maintaining style consistency
 
 ## Features
 
@@ -52,6 +52,8 @@ This app simulates Pokemon battles, allowing users to create teams and engage in
 - Angular CLI (recommended  v18.2.7)
 - Node.js (recommended v18.19.1)
 - Git
+
+### Steps
 
 1. Clone the repository:
 
