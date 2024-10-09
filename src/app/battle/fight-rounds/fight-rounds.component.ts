@@ -37,11 +37,17 @@ export class FightRoundsComponent implements OnInit {
       this.team1Id = params['team1'];
       if (this.team1Id) {
         this.team1 = this.teamSvc.getTeam(this.team1Id);
+        if (!this.team1) {
+          this.router.navigate(['/battle/team-select']);
+        }
       }
       const pokemon1 = this.team1?.pokemon1;
       this.team2Id = params['team2'];
       if (this.team2Id) {
         this.team2 = this.teamSvc.getTeam(this.team2Id);
+        if (!this.team2) {
+          this.router.navigate(['/battle/team-select']);
+        }
       }
       const pokemon2 = this.team2?.pokemon1;
       if (
@@ -72,6 +78,8 @@ export class FightRoundsComponent implements OnInit {
             rounds: [firstRound],
           };
         }
+      } else {
+        this.router.navigate(['/battle/team-select']);
       }
     });
   }

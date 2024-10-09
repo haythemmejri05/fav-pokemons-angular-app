@@ -27,12 +27,17 @@ export class PokemonEditComponent implements OnInit {
       this.pokemonId = params['id'];
       if (this.pokemonId) {
         this.pokemon = this.pokemonSvc.getPokemon(this.pokemonId);
+        if (!this.pokemon) {
+          this.router.navigate(['/pokemons']);
+        }
         if (
           this.pokemon &&
           typeof this.pokemon.type === 'object' &&
           this.pokemon.type !== null
         ) {
           this.pokemonTypeId = this.pokemon.type.id;
+        } else {
+          this.router.navigate(['/pokemons']);
         }
       }
     });

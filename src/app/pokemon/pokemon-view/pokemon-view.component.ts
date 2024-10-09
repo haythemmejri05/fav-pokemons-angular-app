@@ -23,6 +23,9 @@ export class PokemonViewComponent implements OnInit {
       this.pokemonId = params['id'];
       if (this.pokemonId) {
         this.pokemon = this.pokemonSvc.getPokemon(this.pokemonId);
+        if (!this.pokemon) {
+          this.router.navigate(['/pokemons']);
+        }
       }
     });
   }

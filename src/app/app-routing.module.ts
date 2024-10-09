@@ -41,8 +41,8 @@ const routes: Routes = [
     component: FightRoundsComponent,
     canActivate: [AuthGuard],
   },
-  { path: '', redirectTo: '/pokemons', pathMatch: 'full' },
-  { path: '*', redirectTo: '/sign-in' },
+  { path: '', redirectTo: 'pokemons', pathMatch: 'full' },
+  { path: '*', redirectTo: 'sign-in' },
 ];
 
 @NgModule({
