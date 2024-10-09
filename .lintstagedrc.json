@@ -1,7 +1,0 @@
-{
-  "server/**/*.{js}": [
-    "npm run prettier",
-    "npm run lint",
-    "git add -A"
-  ]
-}
