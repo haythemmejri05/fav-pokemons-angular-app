@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { UserService } from '../user/user.service';
 
@@ -7,9 +7,9 @@ import { UserService } from '../user/user.service';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss'
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit {
   user: User | null = null;
-  showSignOutMenu: boolean = false;
+  showSignOutMenu = false;
 
   constructor(private userSvc: UserService) { }
 

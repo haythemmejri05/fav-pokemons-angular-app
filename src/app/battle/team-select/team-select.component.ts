@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Team } from '../../models/team.model';
 import { TeamService } from '../../team/team.service';
 import { Router } from '@angular/router';
@@ -9,10 +9,10 @@ import { BattleService } from '../battle.service';
   templateUrl: './team-select.component.html',
   styleUrl: './team-select.component.scss'
 })
-export class TeamSelectComponent {
+export class TeamSelectComponent implements OnInit {
   teams: Team[] = [];
   selectedTeams: Team[] = [];
-  selectTeamsError: boolean = false;
+  selectTeamsError = false;
 
   constructor(
     private teamSvc: TeamService,

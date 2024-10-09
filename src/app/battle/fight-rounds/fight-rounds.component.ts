@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BattleService } from '../battle.service';
 import { TeamService } from '../../team/team.service';
@@ -12,17 +12,17 @@ import { Battle } from '../../models/battle.model';
   templateUrl: './fight-rounds.component.html',
   styleUrl: './fight-rounds.component.scss'
 })
-export class FightRoundsComponent {
-  team1Id: string = '';
-  team2Id: string = '';
+export class FightRoundsComponent implements OnInit {
+  team1Id = '';
+  team2Id = '';
   team1: Team | undefined = undefined;
   team2: Team | undefined = undefined;
-  roundNumber: number = 1;
+  roundNumber = 1;
   battle: Battle | undefined = undefined;
-  updatePokemon1LifeInProgress: boolean = false;
-  updatePokemon2LifeInProgress: boolean = false;
-  needANewRound: boolean = false;
-  battleFinished: boolean = false;
+  updatePokemon1LifeInProgress = false;
+  updatePokemon2LifeInProgress = false;
+  needANewRound = false;
+  battleFinished = false;
   teamWinning: Team | undefined = undefined;
 
   constructor(private teamSvc: TeamService, private battleSvc: BattleService, private router: Router, private route: ActivatedRoute) { }

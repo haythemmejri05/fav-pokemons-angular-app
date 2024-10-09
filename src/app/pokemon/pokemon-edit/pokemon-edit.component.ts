@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonService } from '../pokemon.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,12 +9,12 @@ import { PokemonType } from '../../models/pokemon-type.model';
   templateUrl: './pokemon-edit.component.html',
   styleUrl: './pokemon-edit.component.scss'
 })
-export class PokemonEditComponent {
-  pokemonId: string = '';
+export class PokemonEditComponent implements OnInit {
+  pokemonId = '';
   pokemon: Pokemon | undefined = undefined;
-  editPokemonError: boolean = false;
+  editPokemonError = false;
   pokemonTypes: PokemonType[] = [];
-  pokemonTypeId: string = '';
+  pokemonTypeId = '';
 
   constructor(private pokemonSvc: PokemonService, private router: Router, private route: ActivatedRoute) { }
 

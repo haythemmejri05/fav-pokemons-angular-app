@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Team } from '../../models/team.model';
 import { Router } from '@angular/router';
 import { PokemonService } from '../../pokemon/pokemon.service';
@@ -10,7 +10,7 @@ import { TeamService } from '../team.service';
   templateUrl: './team-add.component.html',
   styleUrl: './team-add.component.scss',
 })
-export class TeamAddComponent {
+export class TeamAddComponent implements OnInit {
   pokemon1Id = '';
   team: Team = {
     id: '',

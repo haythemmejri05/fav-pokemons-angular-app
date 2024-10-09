@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Team } from '../../models/team.model';
 import { TeamService } from '../team.service';
 
@@ -7,7 +7,7 @@ import { TeamService } from '../team.service';
   templateUrl: './team-list.component.html',
   styleUrl: './team-list.component.scss'
 })
-export class TeamListComponent {
+export class TeamListComponent implements OnInit {
   teams: Team[] = [];
 
   constructor(

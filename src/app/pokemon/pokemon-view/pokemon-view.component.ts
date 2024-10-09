@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonService } from '../pokemon.service';
@@ -8,7 +8,7 @@ import { PokemonService } from '../pokemon.service';
   templateUrl: './pokemon-view.component.html',
   styleUrl: './pokemon-view.component.scss'
 })
-export class PokemonViewComponent {
+export class PokemonViewComponent implements OnInit {
   pokemonId = '';
   pokemon: Pokemon | undefined = undefined;
 

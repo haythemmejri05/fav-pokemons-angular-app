@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonService } from '../pokemon.service';
 
@@ -7,7 +7,7 @@ import { PokemonService } from '../pokemon.service';
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.scss'
 })
-export class PokemonListComponent {
+export class PokemonListComponent implements OnInit {
   pokemons: Pokemon[] = [];
 
   constructor(
