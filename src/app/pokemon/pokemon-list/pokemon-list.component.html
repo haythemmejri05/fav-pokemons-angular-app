@@ -1,0 +1,8 @@
+<div class="container mt-3">
+  <h1>Pokemons List</h1>
+  <ul class="list-group mt-3">
+    <li class="list-group-item" *ngFor="let pokemon of getPokemons()">
+      <app-pokemon-details [pokemon]="pokemon"></app-pokemon-details>
+    </li>
+  </ul>
+</div>

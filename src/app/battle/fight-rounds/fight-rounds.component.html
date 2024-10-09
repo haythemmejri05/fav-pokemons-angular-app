@@ -1,0 +1,75 @@
+<div class="container mt-3" *ngIf="getFightingPokemon1() && getFightingPokemon2()">
+  <h1>Pokemon Battle</h1>
+  <!-- Top team 1 Pokemons -->
+  <div class="container my-4 p-3 rounded team-container">
+    <h3 class="text-center">{{team1?.name}}</h3>
+    <div class="row mt-4 mb-4">
+      <div class="col-2 d-flex flex-column justify-content-center align-items-center" *ngFor="let pokemon of getTeam1Pokemons()">
+        <img [src]="pokemon.image" [ngClass]="{'dead-pokemon-thumbnail': pokemon.life === 0 }" class="img-fluid team-pokemon-thumbnail img-thumbnail rounded-circle" alt="pokemon">
+        <div><span class="badge" [ngClass]="{'text-bg-secondary': !pokemon.life, 'text-bg-primary': pokemon.life}">{{pokemon.name}}</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- Fight Information -->
+  <div class="d-flex justify-content-between align-items-center bg-black text-white rounded p-4">
+    <button class="btn btn-primary" [disabled]="shouldShowPrevious()" (click)="previousRound()">Previous</button>
+    <h1 class="display-4 text-center mb-0">Round {{roundNumber}}</h1>
+    <button class="btn btn-primary" [disabled]="shouldShowNext()" (click)="nextRound()">Next</button>
+  </div>
+  <!-- Fight Information -->
+  <div class="d-flex justify-content-center mt-4" *ngIf="!this.battleFinished">
+    <button class="btn btn-danger btn-lg" [disabled]="!canSimulateFight()" (click)="fightRound()">Simulate Fight</button>
+  </div>
+  <div class="container text-center d-flex justify-content-center align-items-center mt-3" *ngIf="!this.battleFinished && isRoundInProgress()">
+    <h2 class="blink text-info">
+      The Fight round is still in progress, please wait...
+    </h2>
+  </div>
+  <div class="container text-center d-flex justify-content-center align-items-center mt-3" *ngIf="isRoundSimulated()">
+    <h2 class="blink text-warning">
+      The Fight round is simulated<span *ngIf="!this.battleFinished">, please move to the next round</span>
+    </h2>
+  </div>
+  <div class="container text-center d-flex justify-content-center align-items-center mt-3" *ngIf="this.teamWinning">
+    <h2 class="blink text-warning">
+      The Fight is over, the winning team is {{getTeamWinningName()}}
+    </h2>
+  </div>
+  <!-- Fighting Pokemons -->
+  <div class="row mt-4 mb-4">
+    <div class="col-6 d-flex flex-column align-items-center" *ngIf="getFightingPokemon1()">
+      <div class="container text-center mt-1 mb-1 winner-container">
+        <h1 class="blink text-danger" *ngIf="getWinnerIndex().includes(1)">Winner</h1>
+      </div>
+      <div><span class="badge text-bg-success">Life {{getFightingPokemon1()?.life}}</span></div>
+      <div class="progress mt-3 mb-2" role="progressbar" [ngClass]="{'highlight': updatePokemon1LifeInProgress }" aria-label="Example with label" [attr.aria-valuenow]="getFightingPokemon1()?.life" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar" [style.width.%]="getFightingPokemon1()?.life"></div>
+      </div>
+      <img src="{{getFightingPokemon1()?.image}}" class="img-fluid" alt="pokemon">
+      <div><span class="badge text-bg-primary">{{getFightingPokemon1()?.name}}</span></div>
+      <div><span class="badge text-bg-info">Power {{getFightingPokemon1()?.power}}</span></div>
+    </div>
+    <div class="col-6 d-flex flex-column align-items-center" *ngIf="getFightingPokemon2()">
+      <div class="container text-center mt-1 mb-1 winner-container">
+        <h1 class="blink text-danger" *ngIf="getWinnerIndex().includes(2)">Winner</h1>
+      </div>
+      <div><span class="badge text-bg-success">Life {{getFightingPokemon2()?.life}}</span></div>
+      <div class="progress mt-3 mb-2" role="progressbar" [ngClass]="{'highlight': updatePokemon2LifeInProgress }" aria-label="Example with label" [attr.aria-valuenow]="getFightingPokemon2()?.life" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar" [style.width.%]="getFightingPokemon2()?.life"></div>
+      </div>
+      <img src="{{getFightingPokemon2()?.image}}" class="img-fluid" alt="pokemon">
+      <div><span class="badge text-bg-primary">{{getFightingPokemon2()?.name}}</span></div>
+      <div><span class="badge text-bg-info">Power {{getFightingPokemon2()?.power}}</span></div>
+    </div>
+  </div>
+  <!-- Team 2 Pokemons -->
+  <div class="row mt-4 mb-4 p-3 rounded team-container">
+    <h3 class="text-center">{{team2?.name}}</h3>
+    <div class="row mt-4 mb-4">
+      <div class="col-2 d-flex flex-column justify-content-center align-items-center" *ngFor="let pokemon of getTeam2Pokemons()">
+        <img [src]="pokemon.image" [ngClass]="{'dead-pokemon-thumbnail': pokemon.life === 0 }" class="img-fluid team-pokemon-thumbnail img-thumbnail rounded-circle" alt="pokemon">
+        <div><span class="badge" [ngClass]="{'text-bg-secondary': !pokemon.life, 'text-bg-primary': pokemon.life}">{{pokemon.name}}</span></div>
+      </div>
+    </div>
+  </div>
+</div>

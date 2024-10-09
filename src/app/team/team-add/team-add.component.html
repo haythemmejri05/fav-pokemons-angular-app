@@ -1,0 +1,41 @@
+<div class="container mt-3">
+  <h1>Add Team</h1>
+  <form #addTeamForm="ngForm" class="form mt-3" (ngSubmit)="addTeam()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+      <input
+        name="name"
+        class="form-control"
+        required
+        placeholder="Name"
+        type="text"
+        [(ngModel)]="team!.name"
+        #name="ngModel">
+        <em class="error" *ngIf="name.errors?.['required'] && name.touched">Name is required</em>
+    </div>
+    <div class="mb-3" *ngFor="let index of [1, 2, 3, 4, 5, 6]">
+      <label for="pokemon-select" class="form-label">Pokemon {{index}} <span class="text-danger">*</span></label>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ getSelectPokemonName(index-1)|| 'Select Pokemon ' + index }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li *ngFor="let pokemon of getPokemons()" class="pokemon-container">
+            <div class="dropdown-item" (click)="selectPokemon(index, pokemon)">
+              <img [src]="pokemon.image" alt="item.name" class="pokemon-thumbnail me-3">
+              <span class="me-3">{{ pokemon.name }}</span>
+              <span class="badge text-bg-primary me-3">Power {{pokemon.power}}</span>
+              <span class="badge text-bg-success">Life {{pokemon.life}}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="mb-4">
+      <button type="submit" class="btn btn-primary me-2" [disabled]="shouldFormBeDisabled(addTeamForm.form.invalid)">Submit</button>
+      <div class="addTeamError" *ngIf="addTeamError">Add Team Failed. Please try again.</div>
+      <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
+    </div>
+  </form>
+</div>
+

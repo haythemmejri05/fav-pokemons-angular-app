@@ -1,0 +1,41 @@
+.team-pokemon-thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.team-container {
+  background-color: #f8f9fa;
+}
+
+.progress {
+  width: 50%;
+}
+
+.progress, .progress-bar {
+  height: 20px;
+}
+
+.progress.highlight {
+  border: 2px solid #dc3545;
+  transition: border 0.3s ease;
+}
+
+.blink {
+  animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.winner-container {
+  min-height: 60px;
+}
+
+.dead-pokemon-thumbnail {
+  filter: grayscale(100%);
+}

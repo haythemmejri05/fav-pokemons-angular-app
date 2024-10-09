@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>Sign Up</h1>
+  <form #signUpForm="ngForm" class="form" (ngSubmit)="signUp()">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        name="email"
+        class="form-control"
+        required
+        email
+        placeholder="Email Address"
+        type="text"
+        [(ngModel)]="credentials.email"
+        #email="ngModel">
+        <em class="error" *ngIf="email.errors?.['required'] && email.touched">Email is required</em>
+        <em class="error" *ngIf="email.errors?.['email'] && email.touched">Must be a valid email format</em>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        name="password"
+        class="form-control"
+        required
+        placeholder="Password"
+        type="password"
+        [(ngModel)]="credentials.password"
+        #password="ngModel">
+        <em class="error" *ngIf="password.invalid && password.touched">Password is required</em>
+    </div>
+    <div class="mb-3">
+      <label for="passwordConfirmation" class="form-label">Password Confirmation</label>
+      <input
+        name="passwordConfirmation"
+        class="form-control"
+        required
+        placeholder="Password"
+        type="password"
+        [(ngModel)]="credentials.passwordConfirmation"
+        #passwordConfirmation="ngModel">
+        <em class="error" *ngIf="passwordConfirmation.invalid && passwordConfirmation.touched">Password is required</em>
+        <em class="error" *ngIf="passwordConfirmation.touched && passwordConfirmation.value !== password.value">Password confirmation should match the password</em>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary" [disabled]="signUpForm.form.invalid">Sign-Up</button>
+      <div class="signUpError" *ngIf="signUpError">Sign-Up Failed. Please try again.</div>
+    </div>
+  </form>
+</div>
