@@ -86,6 +86,7 @@ export class TeamService {
   addTeam(teamToAdd: Team, selectedPokemons: Pokemon[]): Observable<Team> {
     return this.http
       .post<Team>('/api/teams', teamToAdd)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .pipe(map((_: Team) => {
         const addedTeam: Team = {
           id: '',
