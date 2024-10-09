@@ -9,7 +9,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "eslint .",
-    "prettier": "prettier --check"
+    "prettier": "prettier --check",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +34,8 @@
     "@angular-devkit/build-angular": "^18.2.7",
     "@angular/cli": "^18.2.7",
     "@angular/compiler-cli": "^18.2.0",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@types/jasmine": "~5.1.0",
     "angular-eslint": "18.3.1",
     "commitlint": "^19.5.0",
@@ -50,10 +53,9 @@
     "typescript": "~5.5.2",
     "typescript-eslint": "8.2.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

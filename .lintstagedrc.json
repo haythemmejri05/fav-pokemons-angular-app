@@ -1,10 +1,10 @@
 {
-  "**/*.{ts}": [
+  "**/*.ts": [
     "npm run prettier",
     "npm run lint",
     "git add -A"
   ],
-  "**/*.{html}": [
+  "**/*.html": [
     "npm run prettier",
     "npm run lint",
     "git add -A"
