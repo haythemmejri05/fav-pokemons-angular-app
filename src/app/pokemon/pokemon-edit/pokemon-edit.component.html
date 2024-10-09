@@ -91,12 +91,12 @@
         [disabled]="editPokemonForm.form.invalid">
         Submit
       </button>
-      <div class="error-feedback" *ngIf="editPokemonError">
-        Edit Pokemon Failed. Please try again.
-      </div>
       <button type="button" class="btn btn-secondary" (click)="back()">
         Back
       </button>
+      <div class="error-feedback" *ngIf="editPokemonError">
+        Edit Pokemon Failed. Please try again.
+      </div>
     </div>
   </form>
 </div>
