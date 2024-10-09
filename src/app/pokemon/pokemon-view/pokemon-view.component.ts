@@ -9,7 +9,7 @@ import { PokemonService } from '../pokemon.service';
   styleUrl: './pokemon-view.component.scss'
 })
 export class PokemonViewComponent {
-  pokemonId: string = '';
+  pokemonId = '';
   pokemon: Pokemon | undefined = undefined;
 
   constructor(private pokemonSvc: PokemonService, private router: Router, private route: ActivatedRoute) { }

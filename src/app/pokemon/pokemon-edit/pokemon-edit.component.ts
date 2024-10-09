@@ -43,6 +43,7 @@ export class PokemonEditComponent {
 
   editPokemon() {
     this.editPokemonError = false;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { type, ...newPokemon } = this.pokemon!;
     this.pokemonSvc.editPokemon({ type: this.pokemonTypeId, ...newPokemon }).subscribe({
       next: () => this.router.navigate(['/pokemons/view/', this.pokemon!.id]),

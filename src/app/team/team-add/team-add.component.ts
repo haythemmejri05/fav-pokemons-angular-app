@@ -11,7 +11,7 @@ import { TeamService } from '../team.service';
   styleUrl: './team-add.component.scss',
 })
 export class TeamAddComponent {
-  pokemon1Id: string = '';
+  pokemon1Id = '';
   team: Team = {
     id: '',
     name: '',
@@ -23,7 +23,7 @@ export class TeamAddComponent {
     pokemon5: '',
     pokemon6: '',
   };
-  addTeamError: boolean = false;
+  addTeamError = false;
   pokemons: Pokemon[] = [];
   selectedPokemons: Pokemon[] = [];
 

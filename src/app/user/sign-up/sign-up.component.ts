@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class SignUpComponent {
   credentials: UserCredentials = { email: '', password: '', passwordConfirmation: '' };
-  signUpError: boolean = false;
+  signUpError = false;
 
   constructor(private userSvc: UserService, private router: Router) { }
 

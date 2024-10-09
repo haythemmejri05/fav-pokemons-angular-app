@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class SignInComponent {
   credentials: UserCredentials = { email: '', password: '' };
-  signInError: boolean = false;
+  signInError = false;
 
   constructor(private userSvc: UserService, private router: Router) { }
 

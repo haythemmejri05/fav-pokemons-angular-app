@@ -33,18 +33,15 @@ export class BattleService {
   }
 
   calculateLifeForPokemonAfterRound(pokemon1: Pokemon, pokemon2: Pokemon): number[] {
-    let pokemonWhoWin;
     const pokemon1WeaknessBattle = this.getWeaknessForBattle(pokemon2, pokemon1);
     let remainingLifePokemon1 = pokemon1.life - (pokemon2.power * pokemon1WeaknessBattle);
     if (remainingLifePokemon1 <= 0) {
       remainingLifePokemon1 = 0;
-      pokemonWhoWin = 2;
     }
     const pokemon2WeaknessBattle = this.getWeaknessForBattle(pokemon1, pokemon2);
     let remainingLifePokemon2 = pokemon2.life - (pokemon1.power * pokemon2WeaknessBattle);
     if (remainingLifePokemon2 <= 0) {
       remainingLifePokemon2 = 0;
-      pokemonWhoWin = 1;
     }
     return [Math.round(remainingLifePokemon1), Math.round(remainingLifePokemon2)];
   }
